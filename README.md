@@ -93,6 +93,53 @@ yolo train task=segment model=yolo26n-seg.pt data=dataset_yolo/data.yaml epochs=
 
 Dopo l'addestramento i risultati saranno nella cartella specificata (--project/--name).
 
+Organizzazione cartelle locali (stato del repository locale)
+----------------------------------------------------------
+Questa è la struttura attuale del progetto così com'è sul sistema di sviluppo. Condividerla con i colleghi aiuta a mantenere coerenza.
+
+Root del progetto:
+- Data/                      -> cartella contenente i dataset, immagini e sottocartelle (es. Data\\frame_tesi). (ESEGUITO: contiene i file di training; normalmente esclusa da Git)
+- Data\\frame_tesi\\        -> immagini sorgente usate per le annotazioni e la conversione (118 items)
+- visualize_coco_debug.py     -> script per visualizzare e validare annotazioni COCO
+- coco_to_yolo_seg.py        -> script per convertire COCO -> formato YOLO (segmentazione)
+- train_yolo26n_seg.py       -> script per avviare l'addestramento YOLO 2.6 nano (seg)
+- yolo26n-seg.pt             -> peso modello nano (se presente localmente; file binario grande)
+- debug/                     -> directory per strumenti di debug (logs, immagini di esempio)
+- README.md                  -> questo file
+
+Elementi tipicamente esclusi da Git (consigliato aggiungerli a .gitignore):
+- Data/ (dataset e immagini) -- non committare dataset di grandi dimensioni
+- runs/ (cartelle di training, checkpoints, logs)
+- *.pt, *.pth (pesi grandi) -- se scaricabili dal model zoo, non salvarli nel repo
+- .env, .vscode/, .idea/, __pycache__/, *.pyc
+- dataset_yolo/ (se generato localmente e grande)
+
+Esempio di file .gitignore consigliato (da adattare):
+
+# Dataset and outputs
+Data/
+runs/
+dataset_yolo/
+
+# Model weights
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+Note:
+- Se alcuni pesi (.pt) devono essere condivisi, caricarli su uno storage centrale (Google Drive, S3, o Git LFS per file grandi) e documentare il link nel README.
+
 Contatti
 --------
 Progetto: Addestramento_Modello_Segmentation_Giotto

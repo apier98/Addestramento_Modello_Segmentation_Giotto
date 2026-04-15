@@ -1,0 +1,7 @@
+-addestra un modello sul dataset che crei con i comandi descritti dentro al readme 
+
+- genera uno script per vedere le prediction del modello addestrato su un video che definisce l'utente (--video) 
+
+- genera uno script che fa l'inference da una webcam (--webcam 0) 
+
+- generare uno script che a partire da live stream webcam (useremo la webcam del laboratorio) pesca tutte le informazioni necessarie sulla dimensione dei pezzi e le scrive su disco per analisi successive (possono essere inserite delle logiche per capire se il componente è contenuto totalmente nell'inquadratura e non solo parzialmente per non raccogliere informazioni qui). 
