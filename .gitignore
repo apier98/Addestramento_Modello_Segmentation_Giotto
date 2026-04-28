@@ -55,3 +55,14 @@ desktop.ini
 *.swo
 
 *.pt 
+
+# File e cartelle generate dall'analisi e dal training
+runs/
+results/
+dataset_yolo/
+annotated_out/
+Video/
+Video_Leggeri/
+
+# File CSV e log generati
+*.csv
