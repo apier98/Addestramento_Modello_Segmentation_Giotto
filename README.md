@@ -143,3 +143,19 @@ Note:
 Contatti
 --------
 Progetto: Addestramento_Modello_Segmentation_Giotto
+
+Inference script: detect_video_seg.py
+------------------------------------
+A convenience script to run segmentation inference on a video file or webcam and save annotated output (masks, boxes, labels). It uses ultralytics.YOLO and OpenCV.
+
+Requirements:
+- pip install ultralytics>=2.6 opencv-python pyyaml
+
+Usage examples:
+python detect_video_seg.py --source input.mp4 --weights runs\\yolo26n-seg-run\\weights\\best.pt --out out.mp4
+python detect_video_seg.py --source 0 --weights runs\\yolo26n-seg-run\\weights\\best.pt --out out.mp4
+
+Notes:
+- If --data is not provided, the script attempts to locate Data\\dataset_yolo\\data.yaml referenced in runs/*/args.yaml to load class names.
+- Default weights path is runs\\yolo26n-seg-run\\weights\\best.pt (override with --weights).
+- Use --show to display a live window while processing.

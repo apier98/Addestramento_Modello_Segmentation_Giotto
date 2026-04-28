@@ -5,6 +5,7 @@ ENV/
 Data/
 data/
 debug/
+runs/ 
 
 # --- Python ---
 __pycache__/
